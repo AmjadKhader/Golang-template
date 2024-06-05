@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  db-local-postgres:
+    container_name: db-local-postgres
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+
+volumes:
+  db:
+    driver: local
